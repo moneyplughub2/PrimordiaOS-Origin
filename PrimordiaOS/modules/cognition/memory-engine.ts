@@ -4,6 +4,7 @@ interface MemoryPacket {
   timestamp: number
   payload: any
 }
+
 function validateMemoryPacket(packet: any): boolean {
   if (!packet) return false
   if (typeof packet.id !== "string") return false
@@ -14,12 +15,21 @@ function validateMemoryPacket(packet: any): boolean {
 
 export class MemoryEngine {
   private memory: MemoryPacket[] = []
+  private decayTime = 1000 * 60 * 5 // 5 minutes
+
+  private cleanup() {
+    const now = Date.now()
+    this.memory = this.memory.filter(packet => {
+      return now - packet.timestamp < this.decayTime
+    })
+  }
 
   store(packet: MemoryPacket) {
     if (!validateMemoryPacket(packet)) {
       throw new Error("Invalid memory packet structure")
     }
 
+    this.cleanup()
     this.memory.push(packet)
   }
 
@@ -29,6 +39,10 @@ export class MemoryEngine {
 
   recallByType(type: string) {
     return this.memory.filter(p => p.type === type)
+  }
+
+  purge() {
+    this.memory = []
   }
 }
 
