@@ -1,0 +1,11 @@
+{
+  "cmd": "add_post_process",
+  "settings": {
+    "exposure_min": 1,
+    "exposure_max": 1,
+    "bloom_intensity": 0.4,
+    "bloom_threshold": 1,
+    "saturation": 1.1,
+    "contrast": 1.05
+  }
+}

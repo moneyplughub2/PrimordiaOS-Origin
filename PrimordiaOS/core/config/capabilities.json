@@ -1,0 +1,7 @@
+{
+  "unreal": {
+    "networking": false,
+    "remote_control": false,
+    "steam_sockets": false
+  }
+}

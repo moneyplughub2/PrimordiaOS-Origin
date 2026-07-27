@@ -1,0 +1,8 @@
+export async function initOverlay(canvas: HTMLCanvasElement) {
+  const adapter = await navigator.gpu.requestAdapter();
+  const device = await adapter!.requestDevice();
+  const context = canvas.getContext("webgpu") as GPUCanvasContext;
+
+  // configure context, pipelines, etc.
+  // subscribe to PrimordiaOS WebSocket for live data
+}

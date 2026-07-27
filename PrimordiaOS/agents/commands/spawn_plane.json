@@ -1,0 +1,7 @@
+{
+  "cmd": "spawn_actor",
+  "actor": "Plane",
+  "location": [0, 0, 0],
+  "rotation": [0, 0, 0],
+  "scale": [100, 100, 1]
+}

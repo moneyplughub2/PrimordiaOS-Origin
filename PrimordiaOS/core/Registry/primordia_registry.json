@@ -1,0 +1,14 @@
+{
+  "root": "PrimordiaOS",
+  "codex": "Core/Codex/master_codex.md",
+  "subsystems": {
+    "CreatorOS": "CreatorOS/",
+    "PluginOS": "PluginOS/",
+    "MoneyPlugHub": "MoneyPlugHub/",
+    "Unreal": "Unreal/",
+    "Simulation": "Simulation/",
+    "Pipelines": "Pipelines/",
+    "Objects": "Objects/",
+    "Telemetry": "Telemetry/"
+  }
+}

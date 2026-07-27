@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PrimordiaOS Event Payload",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "system": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": ["pulse_update", "agent_state", "evolution_patch"]
+    },
+    "niagara_system": {
+      "type": "string",
+      "enum": ["NS_PulseWaveBurst", "NS_AgentEnergyOrb", "NS_EvolutionFractalBurst"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parameters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["number", "string", "boolean"]
+      }
+    }
+  },
+  "required": ["version", "system", "event_type", "niagara_system", "timestamp", "parameters"]
+}

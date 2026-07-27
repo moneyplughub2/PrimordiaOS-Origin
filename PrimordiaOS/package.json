@@ -1,0 +1,38 @@
+{
+  "name": "primordiaos",
+  "version": "4.0.0",
+  "type": "module",
+  "scripts": {
+    "electron": "electron main.js",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "dev:gateway": "wrangler dev cloudflare/workers/gateway/index.ts --config cloudflare/wrangler.toml",
+    "dev:auth": "wrangler dev cloudflare/workers/auth/index.ts --config cloudflare/wrangler.toml",
+    "dev:automation": "wrangler dev cloudflare/workers/automation/index.ts --config cloudflare/wrangler.toml",
+    "dev:webhooks": "wrangler dev cloudflare/workers/webhooks/index.ts --config cloudflare/wrangler.toml",
+    "dev:bridge": "wrangler dev cloudflare/workers/bridge/index.ts --config cloudflare/wrangler.toml",
+    "dev:logs": "wrangler dev cloudflare/workers/logs/index.ts --config cloudflare/wrangler.toml",
+    "dev:workers": "wrangler dev cloudflare/workers/gateway/index.ts --config cloudflare/wrangler.toml",
+    "deploy:dev": "wrangler deploy --config cloudflare/wrangler.toml --env dev",
+    "deploy:staging": "wrangler deploy --config cloudflare/wrangler.toml --env staging",
+    "deploy:prod": "wrangler deploy --config cloudflare/wrangler.toml --env prod"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "vite": "^5.0.0",
+    "wrangler": "^4.114.0"
+  },
+  "dependencies": {
+    "hono": "^4.12.32"
+  },
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

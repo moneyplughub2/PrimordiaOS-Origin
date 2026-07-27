@@ -1,0 +1,15 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "description": "PrimordiaOS Electron Vite App",
+  "main": "dist-electron/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-vite": "^2.3.0"
+  }
+}

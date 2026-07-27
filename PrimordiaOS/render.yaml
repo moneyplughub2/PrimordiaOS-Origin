@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: primordiaos-service
+    env: docker
+    plan: free
+    repo: https://github.com/shane/PrimordiaOS.git
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - fromFile: .env

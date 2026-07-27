@@ -1,0 +1,13 @@
+{
+    "FileVersion": 3,
+    "EngineAssociation": "5.8",
+    "Category": "",
+    "Description": "Primordia Unreal integration module",
+    "Modules": [
+        {
+            "Name": "PrimordiaUnreal",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ]
+}

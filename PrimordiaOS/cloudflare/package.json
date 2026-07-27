@@ -1,0 +1,26 @@
+{
+  "name": "primordiaos-cloudflare-workers",
+  "version": "4.0.0",
+  "description": "PrimordiaOS Unified Server-Side Cloudflare Workers Ecosystem",
+  "main": "workers/gateway/index.ts",
+  "scripts": {
+    "dev:gateway": "wrangler dev workers/gateway/index.ts --name primordiaos-gateway",
+    "dev:auth": "wrangler dev workers/auth/index.ts --name primordiaos-auth",
+    "dev:automation": "wrangler dev workers/automation/index.ts --name primordiaos-automation",
+    "dev:webhooks": "wrangler dev workers/webhooks/index.ts --name primordiaos-webhooks",
+    "dev:bridge": "wrangler dev workers/bridge/index.ts --name primordiaos-bridge",
+    "dev:logs": "wrangler dev workers/logs/index.ts --name primordiaos-logs",
+    "dev:workers": "wrangler dev workers/gateway/index.ts",
+    "build": "tsc --noEmit",
+    "deploy:dev": "wrangler deploy --env dev",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:prod": "wrangler deploy --env prod"
+  },
+  "dependencies": {
+    "@cloudflare/workers-types": "^4.20240923.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2",
+    "wrangler": "^3.78.10"
+  }
+}

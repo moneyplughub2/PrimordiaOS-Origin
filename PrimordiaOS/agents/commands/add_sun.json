@@ -1,0 +1,5 @@
+{
+  "cmd": "add_light",
+  "type": "DirectionalLight",
+  "intensity": 10000
+}

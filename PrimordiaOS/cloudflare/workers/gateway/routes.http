@@ -1,0 +1,23 @@
+### Root
+GET http://127.0.0.1:8787/
+
+### Create Session (Durable Object)
+GET http://127.0.0.1:8787/session/create
+
+### Auth Login
+GET http://127.0.0.1:8787/auth/login
+
+### Automation Run
+GET http://127.0.0.1:8787/automation/run
+
+### IPC Kernel
+GET http://127.0.0.1:8787/ipc/kernel
+
+### Logs Write
+GET http://127.0.0.1:8787/logs/write
+
+### Webhooks Test
+GET http://127.0.0.1:8787/webhooks/test
+
+### WebSocket Test
+GET http://127.0.0.1:8787/ws

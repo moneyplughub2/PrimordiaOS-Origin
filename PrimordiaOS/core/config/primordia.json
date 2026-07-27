@@ -1,0 +1,5 @@
+{
+  "name": "PrimordiaOS",
+  "version": "0.1.0",
+  "channels": ["hub", "physics"]
+}

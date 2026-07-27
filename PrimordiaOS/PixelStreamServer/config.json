@@ -1,0 +1,9 @@
+{
+  "UseFrontend": true,
+  "UseMatchmaker": false,
+  "UseHTTPS": false,
+  "HttpPort": 8888,
+  "StreamerPort": 8888,
+  "PublicIp": "127.0.0.1",
+  "peerConnectionOptions": "{}"
+}

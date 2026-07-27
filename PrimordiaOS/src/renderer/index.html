@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>PrimordiaOS</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body{font-family:system-ui,Segoe UI,Roboto,Arial;background:#071018;color:#e6eef8;padding:28px}
+      h1{color:#7ee0a8}
+      pre{background:#02101a;padding:12px;border-radius:6px;overflow:auto}
+      button{background:#0f1724;color:#e6eef8;border:0;padding:8px 12px;border-radius:6px;cursor:pointer}
+    </style>
+  </head>
+  <body>
+    <h1>PrimordiaOS Electron Shell</h1>
+    <p id="status">Checking backend...</p>
+    <button id="check">Check /health</button>
+    <pre id="out"></pre>
+
+    <script>
+      const out = document.getElementById('out');
+      const status = document.getElementById('status');
+      const base = window.primordia?.getBaseUrl?.() || 'https://primordiaos-prod.cashplughub.workers.dev';
+
+      async function check() {
+        out.textContent = 'Probing ' + base + '/health ...';
+        try {
+          const r = await fetch(base + '/health', { cache: 'no-store' });
+          const t = await r.text();
+          out.textContent = r.status + '\\n' + t;
+          status.textContent = 'Backend reachable';
+        } catch (e) {
+          out.textContent = 'Fetch failed: ' + e.message;
+          status.textContent = 'Backend unreachable';
+        }
+      }
+
+      document.getElementById('check').addEventListener('click', check);
+      check();
+    </script>
+  </body>
+</html>

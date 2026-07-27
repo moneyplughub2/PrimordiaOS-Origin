@@ -1,0 +1,24 @@
+{
+  "name": "primordiaos",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/server.js",
+
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "start": "node dist/server.js",
+    "mcp": "ts-node core/mcp/mcp-server.ts"
+  },
+
+  "dependencies": {
+    "express": "^5.2.1",
+    "body-parser": "^2.3.0"
+  },
+
+  "devDependencies": {
+    "typescript": "^7.0.2",
+    "ts-node": "^10.9.2",
+    "@types/node": "^26.1.1",
+    "@types/express": "^5.0.0"
+  }
+}

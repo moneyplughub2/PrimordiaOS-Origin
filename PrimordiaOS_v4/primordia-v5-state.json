@@ -1,0 +1,23 @@
+﻿{
+    "cognition":  {
+                      "lastMode":  "NONE",
+                      "status":  "IDLE"
+                  },
+    "iterations":  0,
+    "lastScene":  "",
+    "lastCommand":  "",
+    "loop":  "STOPPED",
+    "lastProfile":  "",
+    "shell":  "IDLE",
+    "simulation":  {
+                       "status":  "INACTIVE",
+                       "world":  "NONE"
+                   },
+    "lastVectorHash":  "",
+    "nodes":  [
+
+              ],
+    "agents":  [
+
+               ]
+}
