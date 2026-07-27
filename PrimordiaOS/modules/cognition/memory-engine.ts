@@ -15,6 +15,7 @@ function validateMemoryPacket(packet: any): boolean {
 
 export class MemoryEngine {
   private memory: MemoryPacket[] = []
+  private longTerm: MemoryPacket[] = []
   private decayTime = 1000 * 60 * 5 // 5 minutes
 
   private cleanup() {
@@ -24,6 +25,13 @@ export class MemoryEngine {
     })
   }
 
+  private consolidate(packet: MemoryPacket) {
+    // simple rule: promote packets marked "important"
+    if (packet.type === "important") {
+      this.longTerm.push(packet)
+    }
+  }
+
   store(packet: MemoryPacket) {
     if (!validateMemoryPacket(packet)) {
       throw new Error("Invalid memory packet structure")
@@ -31,6 +39,7 @@ export class MemoryEngine {
 
     this.cleanup()
     this.memory.push(packet)
+    this.consolidate(packet)
   }
 
   recallById(id: string) {
@@ -39,6 +48,19 @@ export class MemoryEngine {
 
   recallByType(type: string) {
     return this.memory.filter(p => p.type === type)
+  }
+
+  recallLongTermById(id: string) {
+    return this.longTerm.find(p => p.id === id)
+  }
+
+  recallLongTermByType(type: string) {
+    return this.longTerm.filter(p => p.type === type)
+  }
+
+  promote(packet: MemoryPacket) {
+    if (!validateMemoryPacket(packet)) return
+    this.longTerm.push(packet)
   }
 
   purge() {
