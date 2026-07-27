@@ -3,6 +3,7 @@ interface MemoryPacket {
   type: string
   timestamp: number
   payload: any
+  relevance?: number
 }
 
 function validateMemoryPacket(packet: any): boolean {
@@ -25,6 +26,26 @@ export class MemoryEngine {
     })
   }
 
+  private score(packet: MemoryPacket): number {
+    let score = 0
+
+    // Rule 1: newer memories are more relevant
+    const age = Date.now() - packet.timestamp
+    score += Math.max(0, 10000 - age) / 1000
+
+    // Rule 2: important packets get a boost
+    if (packet.type === "important") {
+      score += 5
+    }
+
+    // Rule 3: payload complexity adds weight
+    if (packet.payload && typeof packet.payload === "object") {
+      score += Object.keys(packet.payload).length * 0.1
+    }
+
+    return score
+  }
+
   private consolidate(packet: MemoryPacket) {
     // simple rule: promote packets marked "important"
     if (packet.type === "important") {
@@ -38,6 +59,9 @@ export class MemoryEngine {
     }
 
     this.cleanup()
+
+    packet.relevance = this.score(packet)
+
     this.memory.push(packet)
     this.consolidate(packet)
   }
@@ -58,8 +82,21 @@ export class MemoryEngine {
     return this.longTerm.filter(p => p.type === type)
   }
 
+  recallMostRelevant() {
+    return this.memory
+      .slice()
+      .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))[0]
+  }
+
+  recallMostRelevantLongTerm() {
+    return this.longTerm
+      .slice()
+      .sort((a, b) => (b.relevance ?? 0) - (a.relevance ?? 0))[0]
+  }
+
   promote(packet: MemoryPacket) {
     if (!validateMemoryPacket(packet)) return
+    packet.relevance = this.score(packet)
     this.longTerm.push(packet)
   }
 
